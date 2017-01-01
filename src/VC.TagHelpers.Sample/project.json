@@ -1,4 +1,8 @@
 {
+  "copyright": "Copyright ©  2017",
+  "title": "VC TagHelpers Sample",
+  "version": "0.1.0",
+  "description": "Sample project for VC.TagHelpers.",
   "dependencies": {
     "Microsoft.ApplicationInsights.AspNetCore": "1.0.2",
     "Microsoft.AspNetCore.Diagnostics": "1.1.0",
