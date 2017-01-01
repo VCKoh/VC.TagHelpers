@@ -1,0 +1,19 @@
+{
+  "title": "VC TagHelpers",
+  "copyright": "Copyright ©  2017",
+  "description": "Collection of TagHelpers  for AspNetCore",
+  "version": "0.1.0-*",
+
+  "dependencies": {
+    "Handlebars.Net": "1.8.0",
+    "Microsoft.AspNetCore.Html.Abstractions": "1.1.0",
+    "Microsoft.AspNetCore.Mvc": "1.1.0",
+    "NETStandard.Library": "1.6.1"
+  },
+
+  "frameworks": {
+    "netstandard1.6": {
+      "imports": "dnxcore50"
+    }
+  }
+}

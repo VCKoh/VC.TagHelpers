@@ -1,0 +1,62 @@
+﻿@using System.Threading.Tasks
+@using Microsoft.Extensions.Primitives
+@model List<VC.TagHelpers.Sample.Models.ItemViewModel>
+@{
+    ViewData["Title"] = "Pager Demo Page";
+}
+
+<h3 class="box-title">@ViewData["Title"]</h3>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">Item List</div>
+
+    <div class="panel-body">
+        <div class="table-responsive no-padding">
+            <table class="table table-bordered table-striped table-hover">
+
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Item Name</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.ItemName</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+
+        @{
+            Func<int, string> getPageUrl = page => Url.Action("Index", new {page});
+
+            var pageNumber = 1;
+
+            if (Context.Request.Query["page"] != default(StringValues))
+            {
+                pageNumber = Convert.ToInt32(Context.Request.Query["page"].ToString());
+            }
+        }
+
+        <pager pager-pagenumber="@pageNumber" pager-pagesize="@ViewBag.PageSize" pager-totalitemcount="@ViewBag.TotalItemCount">
+            <pager-info></pager-info>
+            <pager-paginator pager-paginator-url="@getPageUrl"></pager-paginator>
+        </pager>
+        <br/>
+        <pager pager-pagenumber="@pageNumber" pager-pagesize="@ViewBag.PageSize" pager-totalitemcount="@ViewBag.TotalItemCount">
+            <pager-info pager-info-template="{{FirstItemOnPage}} to {{LastItemOnPage}} of {{TotalItemCount}}"></pager-info>
+            <span class="text-center col-xs-2">Some contents</span>
+            <pager-paginator pager-paginator-first-text="<<" pager-paginator-previous-text="<"
+                             pager-paginator-next-text=">" pager-paginator-last-text=">>"
+                             pager-paginator-url="@getPageUrl">
+            </pager-paginator>
+        </pager>
+    </div>
+
+</div>
