@@ -15,26 +15,26 @@
             <table class="table table-bordered table-striped table-hover">
 
                 <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Item Name</th>
-                </tr>
+                    <tr>
+                        <th>Id</th>
+                        <th>Item Name</th>
+                    </tr>
                 </thead>
 
                 <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>@item.Id</td>
-                        <td>@item.ItemName</td>
-                    </tr>
-                }
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.ItemName</td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
 
         @{
-            Func<int, string> getPageUrl = page => Url.Action("Index", new {page});
+            Func<int, string> getPageUrl = page => Url.Action("Index", new { page });
 
             var pageNumber = 1;
 
@@ -44,19 +44,42 @@
             }
         }
 
+        <h4>Default pager</h4>
         <pager pager-pagenumber="@pageNumber" pager-pagesize="@ViewBag.PageSize" pager-totalitemcount="@ViewBag.TotalItemCount">
             <pager-info></pager-info>
             <pager-paginator pager-paginator-url="@getPageUrl"></pager-paginator>
         </pager>
-        <br/>
-        <pager pager-pagenumber="@pageNumber" pager-pagesize="@ViewBag.PageSize" pager-totalitemcount="@ViewBag.TotalItemCount">
-            <pager-info pager-info-template="{{FirstItemOnPage}} to {{LastItemOnPage}} of {{TotalItemCount}}"></pager-info>
-            <span class="text-center col-xs-2">Some contents</span>
+        <br />
+        <br />
+        <h4>Customized pager</h4>
+        <pager id="pager2" pager-pagenumber="@pageNumber" pager-pagesize="@ViewBag.PageSize" pager-totalitemcount="@ViewBag.TotalItemCount">
             <pager-paginator pager-paginator-first-text="<<" pager-paginator-previous-text="<"
                              pager-paginator-next-text=">" pager-paginator-last-text=">>"
                              pager-paginator-url="@getPageUrl">
             </pager-paginator>
+            <span class="text-center col-xs-6">You can put some content here</span>
+            <pager-info pager-info-template="{{FirstItemOnPage}} to {{LastItemOnPage}} of {{TotalItemCount}}"></pager-info>
         </pager>
     </div>
 
 </div>
+
+@section styles
+{
+    <environment names="Development">
+        <link rel="stylesheet" href="~/css/pager.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/css/pager.min.css" asp-append-version="true" />
+    </environment>
+
+    <style>
+        #pager2 div.pager_info {
+            float: right;
+        }
+
+        #pager2 div.pager_paginator {
+            float: left;
+        }
+    </style>
+}

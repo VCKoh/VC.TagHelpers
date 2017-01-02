@@ -27,7 +27,7 @@
       "type": "platform"
     },
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.1.0",
-    "VC.TagHelpers": "1.0.0-*"
+    "VC.TagHelpers": "0.1.0-*"
   },
 
   "tools": {

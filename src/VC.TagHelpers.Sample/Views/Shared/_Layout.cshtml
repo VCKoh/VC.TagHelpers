@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Threading.Tasks
+@using Microsoft.ApplicationInsights.Extensibility
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -15,6 +17,10 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+
+    <!-- View specific styles -->
+    @RenderSection("styles", required: false)
+
     @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
 </head>
 <body>
