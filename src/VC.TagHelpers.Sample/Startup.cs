@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace VC.TagHelpers.Demo
+namespace VC.TagHelpers.Sample
 {
     public class Startup
     {

@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using HandlebarsDotNet;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
@@ -49,9 +48,12 @@ namespace VC.TagHelpers
 
         private string GetPagerInfo(PagerContext pager)
         {
-            var template = Handlebars.Compile(PagerInfoTemplate);
+            var pagerInfo = PagerInfoTemplate
+                .Replace("{{FirstItemOnPage}}", pager.FirstItemOnPage.ToString())
+                .Replace("{{LastItemOnPage}}", pager.LastItemOnPage.ToString())
+                .Replace("{{TotalItemCount}}", pager.TotalItemCount.ToString());
 
-            return template(pager);
+            return pagerInfo;
         }
     }
 }

@@ -5,7 +5,6 @@
   "version": "0.1.0-*",
 
   "dependencies": {
-    "Handlebars.Net": "1.8.0",
     "Microsoft.AspNetCore.Html.Abstractions": "1.1.0",
     "Microsoft.AspNetCore.Mvc": "1.1.0",
     "NETStandard.Library": "1.6.1"

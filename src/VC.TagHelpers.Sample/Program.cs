@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 
-namespace VC.TagHelpers.Demo
+namespace VC.TagHelpers.Sample
 {
     public class Program
     {
